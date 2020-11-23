@@ -5,6 +5,7 @@
     <color name="akiruGris3">#CBCBCB</color>
     <color name="akiruGris4">#383838</color>
     <color name="akiruColor">#3ED1D6</color>
+    <color name="akiruColor5">#3ED1D6</color>
     <color name="colorPrimary">@color/akiruColor</color>
     <color name="colorPrimaryDark">@color/akiruColor</color>
     <color name="colorAccent">@color/akiruColor</color>
