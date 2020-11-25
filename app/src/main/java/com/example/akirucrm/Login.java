@@ -33,21 +33,13 @@ public class Login extends AppCompatActivity {
             /*conexion = DriverManager.getConnection(""
                     + "jdbc:jtds:sqlserver://192.168.1.143/northwind;instance=SQLEXPRESS;"
                     + "user=PEPE;password=1234;");*/
+            //KEVIN
+            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.143; Integrated Security=False;", "PEPE", "1234");
+
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.43.108;databaseName=HolaMundo;user=sa;password=76076015;");
-            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.56.101; Integrated Security=False;", "AccesoDatos", "Aa1234");
             //SERVER=WINSERVER\SQLEXPRESS;  Integrated Security=False; DATABASE = CINE; user=AccesoDatos; password='Aa1234'
             //Toast.makeText(getApplicationContext(), "holaaaaaa", Toast.LENGTH_LONG).show();
 
-            String bd = "CINE.dbo.Genero";
-            String sql = "insert into " + bd + " values (63, 'PEPEPEPEPEPE')";
-            try {
-                Statement stmt = null;
-                stmt = conexion.createStatement();
-                stmt.executeUpdate(sql);
-                Toast.makeText(getApplicationContext(), "To correcto", Toast.LENGTH_LONG).show();
-            }catch (SQLException e){
-                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-            }
         }
         catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -74,18 +66,18 @@ public class Login extends AppCompatActivity {
     public void agregarUsuario() {
         Connection conexion = null;
 
-        /*try {
-            PreparedStatement pst = conexionBD().prepareStatement("insert into Genero values (?,?)");
-            pst.setInt(1, 45);
-            pst.setString(2,"Loquendo");
-            pst.executeQuery();
+        try {
+            PreparedStatement pst = conexionBD().prepareStatement("insert into HolaMundo.dbo.Empleados (Nombre) values (?)");
+            //pst.setInt(1, 45);
+            pst.setString(1,"Pruebafirewall");
+            pst.executeUpdate();
 
             Toast.makeText(this, "Se ha insertado el registro",Toast.LENGTH_SHORT).show();
         }
         catch (SQLException e) {
             Toast.makeText(this, "ERROR en el registro", Toast.LENGTH_SHORT).show();
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }*/
+        }
     }
 
 }
