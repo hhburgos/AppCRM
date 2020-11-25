@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <declare-styleable name="BarraTitulo">
+        <attr name="empresa" format="string"/>
+        <attr name="empleado" format="string"/>
+    </declare-styleable>
 </resources>
 
