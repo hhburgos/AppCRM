@@ -84,7 +84,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvUltimoPedido"
+                            android:id="@+id/tvLabelUltimoPedido"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"
@@ -94,7 +94,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/tvMediaPedido"
+                            android:id="@+id/tvLabelMediaPedido"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"
@@ -113,7 +113,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvPrecioUltimoPedido"
+                            android:id="@+id/tvUltimoPedido"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
@@ -124,7 +124,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/tvPrecioMediaPedido"
+                            android:id="@+id/tvMediaPedido"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"

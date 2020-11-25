@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="229dp"
         app:empleado="Jim Halpert"
-        app:empresa="Dunder Mifflin">
+        app:empresa="Dunder Mifflin"
+        app:media="14.56"
+        app:ultimo="13.45">
 
     </com.example.akirucrm.BarraTitulo>
 
@@ -24,6 +26,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="-100dp"
         android:layout_marginRight="10dp"
+        android:onClick="cambiar"
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="2"

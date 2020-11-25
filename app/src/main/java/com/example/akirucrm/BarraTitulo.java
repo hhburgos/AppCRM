@@ -14,8 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class BarraTitulo extends ConstraintLayout {
-    private TextView company;
-    private TextView empleado;
+    private TextView company, empleado, tvMedia, tvUltimo;
 
     public BarraTitulo(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -23,6 +22,8 @@ public class BarraTitulo extends ConstraintLayout {
 
         company = findViewById(R.id.tvNombreEmpresa);
         empleado = findViewById(R.id.tvNombreEmpleado);
+        tvMedia = findViewById(R.id.tvMediaPedido);
+        tvUltimo = findViewById(R.id.tvUltimoPedido);
 
         TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.BarraTitulo);
         company.setText(attributes.getString(R.styleable.BarraTitulo_empresa));
@@ -32,8 +33,8 @@ public class BarraTitulo extends ConstraintLayout {
     }
 
     public void onCreate(Bundle savedInstanceState) {
-        company = findViewById(R.id.tvNombreEmpresa);
-        empleado = findViewById(R.id.tvNombreEmpleado);
+        //company = findViewById(R.id.tvNombreEmpresa);
+        //empleado = findViewById(R.id.tvNombreEmpleado);
     }
 
     @Override
@@ -42,10 +43,21 @@ public class BarraTitulo extends ConstraintLayout {
     }
 
     public void setCompany(String comp){
-        this.company.setText(comp);
+        company.setText(comp);
     }
 
     public void setEmpleado(String emp){
-        this.empleado.setText(emp);
+        empleado.setText(emp);
     }
+
+    public void setMedia(double med){
+        String mediapedido = "" + med + "€";
+        tvMedia.setText(mediapedido);
+    }
+
+    public void setUltimo(double ult){
+        String ultimopedido = "" + ult + "€";
+        tvUltimo.setText(ultimopedido);
+    }
+
 }

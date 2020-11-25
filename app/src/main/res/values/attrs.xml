@@ -3,6 +3,8 @@
     <declare-styleable name="BarraTitulo">
         <attr name="empresa" format="string"/>
         <attr name="empleado" format="string"/>
+        <attr name="media" format="float"/>
+        <attr name="ultimo" format ="float"/>
     </declare-styleable>
 </resources>
 
