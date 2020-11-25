@@ -2,6 +2,7 @@ package com.example.akirucrm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.widget.Toast;
@@ -15,10 +16,9 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        //setContentView(R.layout.activity_login);
         //agregarUsuario();
-        conecta();
+        //conecta();
     }
 
     public Connection conexionBD() {
@@ -30,7 +30,9 @@ public class Login extends AppCompatActivity {
             /*conexion = DriverManager.getConnection(""
                     + "jdbc:jtds:sqlserver://192.168.1.143/northwind;instance=SQLEXPRESS;"
                     + "user=PEPE;password=1234;");*/
-            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.43.108;databaseName=HolaMundo;user=sa;password=76076015;");
+            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.43.108;databaseName=HolaMundo;user=sa;password=76076015;");
+            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver:WINSERVER\\SQLEXPRESS; databaseName=CINE", "AccesoDatos", "Aa1234");
+            //SERVER=WINSERVER\SQLEXPRESS;  Integrated Security=False; DATABASE = CINE; user=AccesoDatos; password='Aa1234'
             Toast.makeText(getApplicationContext(), "holaaaaaa", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e) {
@@ -68,4 +70,5 @@ public class Login extends AppCompatActivity {
             Toast.makeText(this, "ERROR en el registro", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

@@ -5,12 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/akiruGris1"
+    android:orientation="vertical"
     tools:context=".Main">
 
     <com.example.akirucrm.BarraTitulo
-        class="com.example.akirucrm.BarraTitulo"
         android:id="@+id/view2"
-        android:layout_width="413dp"
-        android:layout_height="215dp" />
+        android:layout_width="match_parent"
+        android:layout_height="229dp"
+        app:empleado="Jim Halpert"
+        app:empresa="Dunder Mifflin">
+
+    </com.example.akirucrm.BarraTitulo>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginRight="10dp"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="2"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="2"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="2"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
 </LinearLayout>

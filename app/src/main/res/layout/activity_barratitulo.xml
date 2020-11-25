@@ -11,22 +11,22 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="244dp">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="116dp"
-                    android:layout_height="72dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:adjustViewBounds="true"
                     android:cropToPadding="true"
                     android:padding="10dp"
@@ -37,40 +37,49 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvNombreEmpleado"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="right|top"
-                        android:text="Michael Scott"
                         android:textColor="#000000"
-                        android:textSize="18sp"
+                        android:textSize="12sp"
                         tools:text="michael scott" />
 
                     <TextView
                         android:id="@+id/tvNombreEmpresa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
-                        android:gravity="center|right"
-                        android:text="Hola Mundo Corp"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="right|top"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         tools:text="HOLA MUNDO" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="3"
                         android:gravity="bottom"
                         android:orientation="vertical">
 
@@ -78,24 +87,27 @@
                             android:id="@+id/tvUltimoPedido"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
                             android:gravity="right"
-                            android:text="Último Pedido:"
+                            android:text="@string/ultpedido"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tvMediaPedido"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
                             android:gravity="right"
-                            android:text="Media Pedido:"
+                            android:text="@string/medpedido"
                             android:textColor="#FFFFFF"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
                         android:layout_weight="1"
                         android:gravity="bottom"
                         android:orientation="vertical">
@@ -105,19 +117,21 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
+                            android:fontFamily="@font/montserrat"
                             android:gravity="right"
                             android:text="11,99€"
                             android:textColor="#050505"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tvPrecioMediaPedido"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
                             android:gravity="right"
                             android:text="999,99€"
                             android:textColor="#000000"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                 </LinearLayout>
