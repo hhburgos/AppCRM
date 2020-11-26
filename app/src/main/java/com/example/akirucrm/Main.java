@@ -21,7 +21,6 @@ public class Main extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Empleado emp = getIntent().getParcelableExtra("empleado");
         BarraTitulo d = (BarraTitulo)findViewById(R.id.view2);
 
 
@@ -29,10 +28,10 @@ public class Main extends AppCompatActivity implements OnClickListener {
 
         // COGER MEDIA PEDIDO + ULTIMO PEDIDO
         try {
-            String nombreAp = emp.getNombre() + " " + emp.getApellido();
-            String compName = Conexion.getEmpresa();
+            String nombreAp = Empleado.nombre + " " + Empleado.apellido;
+            String compName = Empleado.nEmpresa;
             cambiar(nombreAp, compName, 0,0);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error al cargar los datos!", Toast.LENGTH_SHORT).show();
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }

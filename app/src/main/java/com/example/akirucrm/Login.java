@@ -19,7 +19,6 @@ import java.sql.Statement;
 
 public class Login extends AppCompatActivity {
     EditText etLogin;
-    static Empleado emp;
     static Intent i;
 
     @Override
@@ -55,7 +54,6 @@ public class Login extends AppCompatActivity {
                     if(validar(etLogin)){
                         try {
                             if(loginOK()){
-                                i.putExtra("empleado", emp);
                                 startActivity(i);
                             }else{
                                 Toast.makeText(getApplicationContext(), "Usuario no válido", Toast.LENGTH_LONG).show();
@@ -88,12 +86,11 @@ public class Login extends AppCompatActivity {
         rs = stmt.executeQuery("SELECT * FROM HolaMundo.dbo.Empleados WHERE idEmpleado = " + etLogin.getText());
 
         if (rs.next()) {
-            idEmp = rs.getInt("idEmpleado");
-            idCat = rs.getInt("idCat");
-            nombre = rs.getString("Nombre");
-            apellido = rs.getString("Apellido");
-
-            emp = new Empleado(idEmp, idCat, nombre, apellido);
+            Empleado.idEmp = rs.getInt("idEmpleado");
+            Empleado.idCat = rs.getInt("idCat");
+            Empleado.nombre = rs.getString("Nombre");
+            Empleado.apellido = rs.getString("Apellido");
+            //faltan más variables para poner aquí
         } else {
             return false;
         }
@@ -106,7 +103,6 @@ public class Login extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Introduce tu clave de acceso", Toast.LENGTH_LONG).show();
             return false;
         }else{
-
             return true;
         }
     }
@@ -131,38 +127,4 @@ public class Login extends AppCompatActivity {
         }
         return conexion;
     }
-
-    /*public Connection conecta(){
-        Connection cnn=null;
-        try{
-            StrictMode.ThreadPolicy politica = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(politica);
-
-            Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-            cnn = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.43.108:1433;databaseName=CINE;user=PEPE;password=1234;");
-            Toast.makeText(getApplicationContext(), "holaaaaaa", Toast.LENGTH_SHORT).show();
-        }
-        catch (Exception e){
-            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
-        }
-        return cnn;
-    }*/
-
-    public void agregarUsuario() {
-        Connection conexion = null;
-
-        try {
-            PreparedStatement pst = conexionBD().prepareStatement("insert into HolaMundo.dbo.Empleados (Nombre) values (?)");
-            //pst.setInt(1, 45);
-            pst.setString(1,"Pruebafirewall");
-            pst.executeUpdate();
-
-            Toast.makeText(this, "Se ha insertado el registro",Toast.LENGTH_SHORT).show();
-        }
-        catch (SQLException e) {
-            Toast.makeText(this, "ERROR en el registro", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
 }

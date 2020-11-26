@@ -42,14 +42,13 @@ public class Conexion {
         return rs;
     }
 
-    public static String getEmpresa() throws SQLException {
-        Connection conex = getConexion();
-        Statement stmt = conex.createStatement();
-        ResultSet rs;
+    public static void recogeInfoEmpresa() throws SQLException {
+            Connection conex = getConexion();
+            Statement stmt = conex.createStatement();
+            ResultSet rs;
 
-        rs = stmt.executeQuery("SELECT * from HolaMundo.dbo.CompanyInfo where idEmpresa = 1");
-        rs.next();
-        String comp = rs.getString("Nombre");
-        return comp;
+            rs = stmt.executeQuery("SELECT * from HolaMundo.dbo.CompanyInfo where idEmpresa = 1");
+            rs.next();
+            Empleado.nEmpresa = rs.getNString("Nombre");
     }
 }
