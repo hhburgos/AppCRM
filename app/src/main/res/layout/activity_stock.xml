@@ -30,7 +30,7 @@
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="2"
-        android:text="Hacer Pedido"
+        android:text="Buscar Producto"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <Button
@@ -43,7 +43,7 @@
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="2"
-        android:text="Modificar Pedido"
+        android:text="Listar Producto"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <Button
@@ -56,7 +56,7 @@
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="2"
-        android:text="Consultar Stock"
+        android:text="Por definir"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
 </LinearLayout>

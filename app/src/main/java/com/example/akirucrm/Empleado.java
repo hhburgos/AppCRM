@@ -7,15 +7,17 @@ import java.time.LocalDateTime;
 
 public class Empleado implements Parcelable {
     int idEmp, idCat;
-    String nombre, apellido, DNI, correo, pass;
+    public static String nombre, apellido, DNI, correo, pass;
     LocalDateTime fNacimiento;
     String estado;
+    public static String pepe = "";
 
     public Empleado(int idEmp, int idCat, String nombre, String apellido) {
         this.idEmp = idEmp;
         this.idCat = idCat;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.pepe = nombre;
     }
 
     protected Empleado(Parcel in) {
