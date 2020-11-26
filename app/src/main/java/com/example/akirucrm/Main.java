@@ -4,22 +4,42 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Main extends AppCompatActivity {
+    Connection conex = Conexion.getConexion();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Empleado emp = getIntent().getParcelableExtra("empleado");
+        BarraTitulo d = (BarraTitulo)findViewById(R.id.view2);
+
+        //Toast.makeText(getApplicationContext(), emp.getNombre(), Toast.LENGTH_LONG).show();
+
+        // COGER MEDIA PEDIDO + ULTIMO PEDIDO
+        try {
+            String nombreAp = emp.getNombre() + " " + emp.getApellido();
+            String compName = Conexion.getEmpresa();
+            cambiar(nombreAp, compName, 0,0);
+        } catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Error al cargar los datos!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        //d.setEmpleado(emp.getNombre());
+        //Toast.makeText(getApplicationContext(), d.getEmpleado(), Toast.LENGTH_LONG).show();
     }
 
-    public void cambiar(View view2){
+    public void cambiar(String emp, String comp, double med, double ult){
         BarraTitulo d = (BarraTitulo) findViewById(R.id.view2);
-        d.setEmpleado("Michael Scott");
-        d.setCompany("DUNDER MIFFLIN Corp.");
-        d.setMedia(134.56);
-        d.setUltimo(56.79);
-
-
+        d.setEmpleado(emp);
+        d.setCompany(comp);
+        d.setMedia(med);
+        d.setUltimo(ult);
     }
 }

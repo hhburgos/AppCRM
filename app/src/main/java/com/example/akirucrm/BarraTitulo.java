@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,10 +24,10 @@ public class BarraTitulo extends ConstraintLayout {
         tvMedia = findViewById(R.id.tvMediaPedido);
         tvUltimo = findViewById(R.id.tvUltimoPedido);
 
-        TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.BarraTitulo);
+        /*TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.BarraTitulo);
         company.setText(attributes.getString(R.styleable.BarraTitulo_empresa));
         empleado.setText(attributes.getString(R.styleable.BarraTitulo_empleado));
-        attributes.recycle();
+        attributes.recycle();*/
 
     }
 
@@ -48,6 +47,10 @@ public class BarraTitulo extends ConstraintLayout {
 
     public void setEmpleado(String emp){
         empleado.setText(emp);
+    }
+
+    public String getEmpleado(){
+        return empleado.getText().toString();
     }
 
     public void setMedia(double med){
