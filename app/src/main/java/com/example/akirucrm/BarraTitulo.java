@@ -24,6 +24,7 @@ public class BarraTitulo extends ConstraintLayout {
         tvMedia = findViewById(R.id.tvMediaPedido);
         tvUltimo = findViewById(R.id.tvUltimoPedido);
 
+
         /*TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.BarraTitulo);
         company.setText(attributes.getString(R.styleable.BarraTitulo_empresa));
         empleado.setText(attributes.getString(R.styleable.BarraTitulo_empleado));

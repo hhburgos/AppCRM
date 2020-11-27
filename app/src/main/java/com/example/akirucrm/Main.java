@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,9 +21,12 @@ public class Main extends AppCompatActivity implements OnClickListener {
         setContentView(R.layout.activity_main);
 
         BarraTitulo d = (BarraTitulo)findViewById(R.id.view2);
-
-
-        //Toast.makeText(getApplicationContext(), emp.getNombre(), Toast.LENGTH_LONG).show();
+        try {
+            Conexion.recogeInfoEmpresa();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        inicializar();
 
         // COGER MEDIA PEDIDO + ULTIMO PEDIDO
         try {
@@ -32,13 +34,9 @@ public class Main extends AppCompatActivity implements OnClickListener {
             String compName = Empleado.nEmpresa;
             cambiar(nombreAp, compName, 0,0);
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Error al cargar los datos!", Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            Empleado.mensaje("Error al cargar los datos!",this);
+            Empleado.mensaje(e.getMessage(),getApplication());
         }
-
-        Toast.makeText(getApplicationContext(), Empleado.nombre.toString(), Toast.LENGTH_SHORT).show();
-        //d.setEmpleado(emp.getNombre());
-        //Toast.makeText(getApplicationContext(), d.getEmpleado(), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -54,7 +52,7 @@ public class Main extends AppCompatActivity implements OnClickListener {
             startActivity(aStock);
         }
         catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Empleado.mensaje(e.getMessage(),this);
         }
     }
 
@@ -68,12 +66,8 @@ public class Main extends AppCompatActivity implements OnClickListener {
 
     public void inicializar () {
         //btnModificarPedido = findViewById(R.id.btnListarProducto);
-
         btnConsultarStock = findViewById(R.id.btnConsultarStock);
         btnConsultarStock.setOnClickListener(this);
-
         //btnHacerPedido = findViewById(R.id.btnBuscarProducto);
     }
-
-
 }

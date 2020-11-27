@@ -16,17 +16,16 @@ public class Conexion {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy((policy));
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
+
             //REMOTO kevin
-            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.143; Integrated Security=False;", "PEPE", "1234");
+            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.143; Integrated Security=False;", "PACO", "1234");
 
             //LOCAL UNAI
-            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.143; Integrated Security=False;", "PEPE", "1234");
-            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.43.108;databaseName=HolaMundo;user=sa;password=76076015;");
             //SERVER=WINSERVER\SQLEXPRESS;  Integrated Security=False; DATABASE = CINE; user=AccesoDatos; password='Aa1234'
             //Toast.makeText(getApplicationContext(), "holaaaaaa", Toast.LENGTH_LONG).show();
         }
         catch (Exception e) {
-
+            e.getMessage();
         }
         return conexion;
     }
@@ -50,5 +49,5 @@ public class Conexion {
             rs = stmt.executeQuery("SELECT * from HolaMundo.dbo.CompanyInfo where idEmpresa = 1");
             rs.next();
             Empleado.nEmpresa = rs.getNString("Nombre");
-    }
+}
 }

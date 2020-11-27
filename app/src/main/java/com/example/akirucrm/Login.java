@@ -56,11 +56,11 @@ public class Login extends AppCompatActivity {
                             if(loginOK()){
                                 startActivity(i);
                             }else{
-                                Toast.makeText(getApplicationContext(), "Usuario no válido", Toast.LENGTH_LONG).show();
+                                Empleado.mensaje("Usuario no válido",getApplication());
                             }
                         }catch(Exception e){
-                            Toast.makeText(getApplicationContext(), "¡Error de conexión!", Toast.LENGTH_LONG).show();
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            Empleado.mensaje("¡Error de conexión!",getApplication());
+                            Empleado.mensaje(e.getMessage(), getApplication());
                             return false;
                         }
                     }
@@ -100,7 +100,7 @@ public class Login extends AppCompatActivity {
 
     private boolean validar(EditText etLogin) {
         if(etLogin.getText().length() == 0){
-            Toast.makeText(getApplicationContext(), "Introduce tu clave de acceso", Toast.LENGTH_LONG).show();
+            Empleado.mensaje("Introduce tu clave de acceso",getApplication());
             return false;
         }else{
             return true;
@@ -123,8 +123,10 @@ public class Login extends AppCompatActivity {
             //Toast.makeText(getApplicationContext(), "holaaaaaa", Toast.LENGTH_LONG).show();
         }
         catch (Exception e) {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+            Empleado.mensaje(e.getMessage(),getApplication());
         }
         return conexion;
     }
+
+
 }
