@@ -1,9 +1,5 @@
 package com.example.akirucrm;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -12,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,17 +17,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Login extends AppCompatActivity {
+public class Loginbackup extends AppCompatActivity {
     EditText etLogin;
     static Empleado emp;
     static Intent i;
-    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        i =new Intent(this,activity_nuevopedido.class);
+        i =new Intent(this,Main.class);
 
         etLogin = findViewById(R.id.editTextNumberPassword);
 
@@ -60,7 +57,6 @@ public class Login extends AppCompatActivity {
                             if(loginOK()){
                                 i.putExtra("empleado", emp);
                                 startActivity(i);
-                                ((Activity) context).overridePendingTransition(R.anim.abc_slide_in_bottom,R.anim.abc_slide_out_bottom);
                             }else{
                                 Toast.makeText(getApplicationContext(), "Usuario no válido", Toast.LENGTH_LONG).show();
                             }
@@ -125,7 +121,7 @@ public class Login extends AppCompatActivity {
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.143; Integrated Security=False;", "PEPE", "1234");
 
             //LOCAL
-            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.13; Integrated Security=False;", "AccesoDatos", "Aa1234");
+            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://"+ this.getResources().getString(R.string.ip_server) + "172.202.255.98; Integrated Security=False;", "AccesoDatos", "Aa1234");
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.43.108;databaseName=HolaMundo;user=sa;password=76076015;");
             //SERVER=WINSERVER\SQLEXPRESS;  Integrated Security=False; DATABASE = CINE; user=AccesoDatos; password='Aa1234'
             //Toast.makeText(getApplicationContext(), "holaaaaaa", Toast.LENGTH_LONG).show();

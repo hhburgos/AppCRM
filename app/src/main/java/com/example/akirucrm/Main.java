@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Main extends AppCompatActivity {
     Connection conex = Conexion.getConexion();
@@ -18,7 +21,7 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Empleado emp = getIntent().getParcelableExtra("empleado");
-        BarraTitulo d = (BarraTitulo)findViewById(R.id.view2);
+        BarraTitulo d = (BarraTitulo)findViewById(R.id.vBarraTitulo);
 
         //Toast.makeText(getApplicationContext(), emp.getNombre(), Toast.LENGTH_LONG).show();
 
@@ -36,10 +39,12 @@ public class Main extends AppCompatActivity {
     }
 
     public void cambiar(String emp, String comp, double med, double ult){
-        BarraTitulo d = (BarraTitulo) findViewById(R.id.view2);
+        BarraTitulo d = (BarraTitulo) findViewById(R.id.vBarraTitulo);
         d.setEmpleado(emp);
         d.setCompany(comp);
         d.setMedia(med);
         d.setUltimo(ult);
     }
+
+
 }

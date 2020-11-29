@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutNuevoPedido"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/akiruGris1"
+    android:divider="@android:drawable/title_bar_tall"
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    tools:context=".activity_nuevopedido">
+
+    <com.example.akirucrm.BarraTitulo2
+        android:id="@+id/vBarraTituloNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:empleado="Jim Halpert"
+        app:empresa="Dunder Mifflin"
+        app:media="14.56"
+        app:ultimo="13.45">
+
+    </com.example.akirucrm.BarraTitulo2>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/listaPedido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"
+                android:isScrollContainer="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutTotalPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/akiruColor"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/btnRedo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/botonredo" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/tvLabelTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="right|top"
+                    android:text="@string/labeltotalpedido"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="TOTAL PEDIDO" />
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="right|top"
+                    android:text="22,45€"
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:text="22,45€" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical">
+
+                <Button
+                    android:id="@+id/btnGrabar"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Grabar" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -9,7 +9,7 @@
     tools:context=".Main">
 
     <com.example.akirucrm.BarraTitulo
-        android:id="@+id/view2"
+        android:id="@+id/vBarraTitulo"
         android:layout_width="match_parent"
         android:layout_height="229dp"
         app:empleado="Jim Halpert"
@@ -31,7 +31,7 @@
         android:shadowDy="5"
         android:shadowRadius="2"
         android:text="Button"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/vBarraTitulo" />
 
     <Button
         android:id="@+id/button2"
@@ -43,7 +43,7 @@
         android:shadowDy="5"
         android:shadowRadius="2"
         android:text="Button"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/vBarraTitulo" />
 
     <Button
         android:id="@+id/button3"
@@ -55,6 +55,6 @@
         android:shadowDy="5"
         android:shadowRadius="2"
         android:text="Button"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/vBarraTitulo" />
 
 </LinearLayout>

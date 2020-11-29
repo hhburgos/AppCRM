@@ -6,5 +6,19 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="ip_server">192.168.56.1</string>
+    <string name="ip_server">192.168.0.100</string>
+    <string name="nuevopedido">NUEVO PEDIDO</string>
+    <string name="labeltotalpedido">TOTAL PEDIDO</string>
+
+    <string-array name="numeromesas">
+        <item>L1</item>
+        <item>L2</item>
+        <item>L3</item>
+        <item>L4</item>
+        <item>T1</item>
+        <item>T2</item>
+        <item>T3</item>
+        <item>T4</item>
+    </string-array>
+
 </resources>
