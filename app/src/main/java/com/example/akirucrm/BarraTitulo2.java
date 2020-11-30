@@ -8,7 +8,9 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,10 +32,12 @@ public class BarraTitulo2 extends ConstraintLayout {
     private TextView company, empleado, tvTitulo;
     private Spinner spMesa, spComensales;
     private TabLayout tabs, tabsFamilia;
-    private TabItem tabComida, tabBebida;
+    private TabItem tabComida, tabBebida, tabBuscar;
     private static final int REQUEST_CODE = 1;
     private static Intent i;
     private BarraTitulo2 context = this;
+    private static AutoCompleteTextView autoText;
+    private HorizontalScrollView layoutTabs;
 
     public BarraTitulo2(@NonNull final Context context, @Nullable AttributeSet attrs) throws SQLException {
         super(context, attrs);
@@ -45,6 +49,7 @@ public class BarraTitulo2 extends ConstraintLayout {
         spMesa = findViewById(R.id.spMesa);
         tvTitulo.setText(this.getResources().getString(R.string.nuevopedido));
         tabComida = findViewById(R.id.tabComida);
+        tabBuscar = findViewById(R.id.tabBuscar);
         tabs = findViewById(R.id.tabsOpcion);
         tabsFamilia = findViewById(R.id.tabsFamilia);
 
@@ -62,7 +67,11 @@ public class BarraTitulo2 extends ConstraintLayout {
               @Override
               public void onTabSelected(TabLayout.Tab tab) {
                   try {
-                      changeTabs(tab.getText().toString());
+                      if(tab.getText()==null){
+                          mostrarBusqueda();
+                      }else {
+                          changeTabs(tab.getText().toString());
+                      }
                   } catch (SQLException e) {
                       e.printStackTrace();
                   }
@@ -138,6 +147,14 @@ public class BarraTitulo2 extends ConstraintLayout {
         spMesa.setAdapter(adapter);*/
     }
 
+    private void mostrarBusqueda() {
+        autoText = (AutoCompleteTextView)findViewById(R.id.autoTextView);
+        autoText.setVisibility(VISIBLE);
+        layoutTabs.setVisibility(GONE);
+
+    }
+
+
     public void onCreate(Bundle savedInstanceState) {
     }
 
@@ -160,14 +177,26 @@ public class BarraTitulo2 extends ConstraintLayout {
 
     public void changeTabs(String opcion) throws SQLException {
         tabs = findViewById(R.id.tabsFamilia);
+        layoutTabs = findViewById(R.id.layoutFamilias);
+
+        autoText = (AutoCompleteTextView)findViewById(R.id.autoTextView);
+        autoText.setVisibility(GONE);
+        layoutTabs.setVisibility(VISIBLE);
+
         ArrayList<String> familias = new ArrayList<String>();
         tabs.removeAllTabs();
 
-        familias = Conexion.getFamilias(opcion);
-        tabs.addTab(tabs.newTab().setText(">"));
 
-        for (String f: familias) {
-            tabs.addTab(tabs.newTab().setText(f.toString()));
+        if(opcion.equalsIgnoreCase("comida") || opcion.equalsIgnoreCase("bebida")){
+
+            familias = Conexion.getFamilias(opcion);
+            tabs.addTab(tabs.newTab().setText(">"));
+
+            for (String f: familias) {
+                tabs.addTab(tabs.newTab().setText(f.toString()));
+            }
+        }else{
         }
+
     }
 }

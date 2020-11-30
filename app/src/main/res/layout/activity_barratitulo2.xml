@@ -215,5 +215,19 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AutoCompleteTextView"
+            android:visibility="gone" />
+    </LinearLayout>
+
 
 </LinearLayout>

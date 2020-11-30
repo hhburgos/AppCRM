@@ -189,6 +189,7 @@
     </com.google.android.material.tabs.TabLayout>
 
     <HorizontalScrollView
+        android:id="@+id/layoutFamilias"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:scrollbarAlwaysDrawHorizontalTrack="false"
@@ -215,6 +216,14 @@
             </com.google.android.material.tabs.TabLayout>
         </LinearLayout>
     </HorizontalScrollView>
+
+    <AutoCompleteTextView
+        android:id="@+id/autoTextView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="AutoCompleteTextView"
+        android:textSize="24sp"
+        android:visibility="visible" />
 
 
 </LinearLayout>
