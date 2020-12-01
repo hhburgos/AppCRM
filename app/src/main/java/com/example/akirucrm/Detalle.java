@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -109,14 +111,18 @@ public class Detalle extends AppCompatActivity {
             LayoutInflater inflater = appCompatActivity.getLayoutInflater();
             View item = inflater.inflate(R.layout.layout_lista_articulos, null);
 
+            ImageView imgArticulo = (ImageView)item.findViewById(R.id.imgArticulo);
+            String src = "com.example.akirucrm:drawable/" + listaArticulos.get(position).getCodigo().toLowerCase();
+            int id = getResources().getIdentifier(src, null, null);
+            imgArticulo.setImageResource(id);
             TextView tvNombre = (TextView)item.findViewById(R.id.tvNombre);
             tvNombre.setText(listaArticulos.get(position).getNombre());
 
             TextView tvPrecio = (TextView)item.findViewById(R.id.tvPrecio);
-            tvPrecio.setText(listaArticulos.get(position).getPrecio() + "€/Ud.");
+            tvPrecio.setText(listaArticulos.get(position).getPrecio() + "€");
 
             TextView tvStock = (TextView)item.findViewById(R.id.tvStock);
-            tvStock.setText(listaArticulos.get(position).getStock() + "uds.");
+            tvStock.setText("Quedan " + listaArticulos.get(position).getStock() + "uds.");
 
             final TextView tvCantidad = (TextView)item.findViewById(R.id.tvCantidad);
             tvCantidad.setText(String.valueOf(listaArticulos.get(position).getCantidad()));

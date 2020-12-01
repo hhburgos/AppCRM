@@ -20,7 +20,10 @@ public class Conexion {
             StrictMode.setThreadPolicy((policy));
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
             //LOCAL
-            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.13; Integrated Security=False;", "AccesoDatos", "Aa1234");
+
+            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.179; Integrated Security=False;", "AccesoDatos", "Aa1234");
+            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.13; Integrated Security=False;", "AccesoDatos", "Aa1234");
+            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.18; Integrated Security=False;", "AccesoDatos", "Aa1234");
         }
         catch (Exception e) {
             e.printStackTrace();
