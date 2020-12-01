@@ -6,5 +6,9 @@
         <attr name="media" format="float"/>
         <attr name="ultimo" format ="float"/>
     </declare-styleable>
+
+    <declare-styleable name="button_round">
+        <attr name="color" format="color"/>
+    </declare-styleable>
 </resources>
 

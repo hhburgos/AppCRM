@@ -18,69 +18,107 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="@color/akiruGris4"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <FrameLayout
+                android:layout_width="125dp"
+                android:layout_height="125dp">
 
-            <TextView
-                android:id="@+id/tvStock"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center|left"
-                android:text="45"
-                android:textColor="@color/akiruGris4" />
+                <ImageView
+                    android:id="@+id/imgArticulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ag1" />
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center|right"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/tvPrecio"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvNombre"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:paddingLeft="50dp"
+                    android:autoText="false"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:minLines="2"
                     android:text="TextView"
-                    android:textColor="@color/akiruColor"
-                    android:textSize="18sp" />
-
-                <Button
-                    android:id="@+id/btnMenos"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:text="-"
-                    android:textSize="24sp" />
+                    android:textColor="@color/akiruGris4"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="none" />
 
                 <TextView
-                    android:id="@+id/tvCantidad"
-                    android:layout_width="50dp"
+                    android:id="@+id/tvStock"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@color/akiruColor"
-                    android:textSize="18sp" />
+                    android:gravity="center|left"
+                    android:text="45"
+                    android:textColor="@color/akiruGris4"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
 
-                <Button
-                    android:id="@+id/btnMas"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:text="+"
-                    android:textSize="24sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvPrecio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:paddingLeft="50dp"
+                        android:text="TextView"
+                        android:textColor="@android:color/holo_green_light"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnMenos"
+                        style="@android:style/Widget.Material.Light.Button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:text="-"
+                        android:textColor="@android:color/white"
+                        android:textColorHighlight="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColorLink="@android:color/white"
+                        android:textSize="24sp"
+                        android:theme="@style/Widget.MaterialComponents.Button" />
+
+                    <TextView
+                        android:id="@+id/tvCantidad"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/akiruColor"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btnMas"
+                        style="@android:style/Widget.Material.Light.Button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:text="+"
+                        android:textColor="@android:color/white"
+                        android:textColorHighlight="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColorLink="@android:color/holo_green_light"
+                        android:textSize="24sp"
+                        android:theme="@style/Widget.MaterialComponents.Button" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AkiruCRM</string>
+    <string name="app_name">Akiru</string>
     <string name="ultpedido">Último Pedido:</string>
     <string name="medpedido">Media Pedido:</string>
     <string name="title_activity_main">MainActivity</string>

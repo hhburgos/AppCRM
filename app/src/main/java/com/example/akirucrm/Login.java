@@ -125,10 +125,11 @@ public class Login extends AppCompatActivity {
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.143; Integrated Security=False;", "PEPE", "1234");
 
             //LOCAL
-            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.13; Integrated Security=False;", "AccesoDatos", "Aa1234");
-            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.43.108;databaseName=HolaMundo;user=sa;password=76076015;");
-            //SERVER=WINSERVER\SQLEXPRESS;  Integrated Security=False; DATABASE = CINE; user=AccesoDatos; password='Aa1234'
-            //Toast.makeText(getApplicationContext(), "holaaaaaa", Toast.LENGTH_LONG).show();
+            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.179; Integrated Security=False;", "AccesoDatos", "Aa1234");
+            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.13; Integrated Security=False;", "AccesoDatos", "Aa1234");
+            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.18; Integrated Security=False;", "AccesoDatos", "Aa1234");
+
+
         }
         catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
