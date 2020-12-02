@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+
 
     tools:context=".Main">
 
@@ -182,52 +183,81 @@
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabBuscar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="?android:attr/actionModeWebSearchDrawable" />
+            android:layout_height="10dp"
+            android:icon="?android:attr/actionModeWebSearchDrawable"
+            tools:visibility="gone" />
 
     </com.google.android.material.tabs.TabLayout>
 
-    <HorizontalScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:scrollbarAlwaysDrawHorizontalTrack="false"
-        android:scrollbars="none"
-        android:soundEffectsEnabled="false">
+        android:visibility="visible">
 
         <LinearLayout
+            android:id="@+id/layoutBusqueda"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabsFamilia"
+            <AutoCompleteTextView
+                android:id="@+id/autoBusqueda"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="Buscar productos..."
+                android:textColorHint="@color/akiruColor"
+                android:textIsSelectable="false"
+                android:textSize="24sp"
+                android:visibility="visible" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btnBusqueda"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:includeFontPadding="false"
+                    android:text="buscar" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/layoutFamilias"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbars="none"
+            android:soundEffectsEnabled="false"
+            tools:visibility="visible">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:tabBackground="@color/akiruGris3"
-                app:tabGravity="center">
+                android:orientation="vertical">
 
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tabItem10"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabsFamilia"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tab2" />
-            </com.google.android.material.tabs.TabLayout>
-        </LinearLayout>
-    </HorizontalScrollView>
+                    android:layout_height="match_parent"
+                    app:tabBackground="@color/akiruGris3"
+                    app:tabGravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tabItem10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tab2" />
+                </com.google.android.material.tabs.TabLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
 
-        <AutoCompleteTextView
-            android:id="@+id/autoTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="AutoCompleteTextView"
-            android:visibility="gone" />
-    </LinearLayout>
+    </FrameLayout>
 
 
 </LinearLayout>

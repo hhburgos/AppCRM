@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!--<item name="patternViewStyle">@style/PatternView.Holo.Light</item>-->
         <item name="colorPrimary">@color/akiruColor</item>
@@ -24,4 +24,15 @@
         <item name="android:textColorPrimary">@color/akiruColor</item>
         <item name="actionOverflowMenuStyle">@color/akiruColor</item>
     </style>
+
+    <style name="MyActivityDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
 </resources>

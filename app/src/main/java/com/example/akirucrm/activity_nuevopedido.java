@@ -3,11 +3,7 @@ package com.example.akirucrm;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.transition.TransitionManager;
 
-import android.app.Activity;
-import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,13 +39,13 @@ public class activity_nuevopedido extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevopedido);
         layoutNewPedido = findViewById(R.id.layoutNuevoPedido);
         layoutTotalPedido = findViewById(R.id.layoutTotalPedido);
-
 
         try {
             Connection conex = Conexion.getConexion();
@@ -153,7 +149,6 @@ public class activity_nuevopedido extends AppCompatActivity {
         } catch (SQLException e) {
             e.getMessage();
         }
-
     }
 
     public static String calcularTotalPedido(){
@@ -161,10 +156,8 @@ public class activity_nuevopedido extends AppCompatActivity {
         for (Articulo a: pedido) {
             totalPedido = totalPedido + (a.getPrecio() * a.getCantidad());
         }
-
         return String.format("%.2f", totalPedido);
     }
-
 
     class AdaptadorArticulos extends ArrayAdapter<Articulo> {
         AppCompatActivity appCompatActivity;
@@ -178,11 +171,16 @@ public class activity_nuevopedido extends AppCompatActivity {
             LayoutInflater inflater = appCompatActivity.getLayoutInflater();
             View item = inflater.inflate(R.layout.layout_lista_articulos_pedidos, null);
 
+            ImageView imgArticulo = (ImageView)item.findViewById(R.id.imgArticulo);
+            String src = "com.example.akirucrm:drawable/" + pedido.get(position).getCodigo().toLowerCase();
+            int id = getResources().getIdentifier(src, null, null);
+            imgArticulo.setImageResource(id);
+
             TextView tvNombre = (TextView)item.findViewById(R.id.tvNombre);
             tvNombre.setText(pedido.get(position).getNombre());
 
             TextView tvPrecio = (TextView)item.findViewById(R.id.tvPrecio);
-            tvPrecio.setText(pedido.get(position).getPrecio() + "€/Ud.");
+            tvPrecio.setText(pedido.get(position).getPrecio() + "€");
 
             final TextView tvCantidad = (TextView)item.findViewById(R.id.tvCantidad);
             tvCantidad.setText(String.valueOf(pedido.get(position).getCantidad()));
@@ -207,34 +205,34 @@ public class activity_nuevopedido extends AppCompatActivity {
             btnmenos.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(pedido.get(position).getCantidad()>0){
+                    if(pedido.get(position).getCantidad()>1) {
                         pedido.get(position).restaCantidad();
-                        if(pedido.get(position).getCantidad()==0){
-                            builder = new AlertDialog.Builder(btnmenos.getContext());
-                            builder.setMessage("¿Borrar " + pedido.get(position).getNombre() + "?");
-                            builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    pedido.remove(pedido.get(position));
-                                    adaptador.notifyDataSetChanged();
-                                }
-                            });
+                        tvCantidad.setText(String.valueOf(pedido.get(position).getCantidad()));
+                        tvTotal.setText(String.valueOf(calcularTotalPedido()) + "€");
+                    }else{
+                        builder = new AlertDialog.Builder(btnmenos.getContext());
+                        builder.setMessage("¿Borrar " + pedido.get(position).getNombre() + "?");
+                        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                pedido.remove(pedido.get(position));
+                                tvTotal.setText(String.valueOf(calcularTotalPedido()) + "€");
+                                adaptador.notifyDataSetChanged();
 
-                            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    pedido.get(position).setCantidad(1);
-                                    tvCantidad.setText(String.valueOf(pedido.get(position).getCantidad()));
-                                    tvTotal.setText(String.valueOf(calcularTotalPedido()) + "€");
-                                    dialog.dismiss();
-                                }
-                            });
-                            AlertDialog alert = builder.create();
-                            alert.show();
-                        }else{
-                            tvCantidad.setText(String.valueOf(pedido.get(position).getCantidad()));
-                        }
+                            }
+                        });
+
+                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                pedido.get(position).setCantidad(1);
+                                tvCantidad.setText(String.valueOf(pedido.get(position).getCantidad()));
+                                tvTotal.setText(String.valueOf(calcularTotalPedido()) + "€");
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
                     }
-                    tvTotal.setText(String.valueOf(calcularTotalPedido()) + "€");
                 }
             });
 
@@ -246,6 +244,7 @@ public class activity_nuevopedido extends AppCompatActivity {
                     builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             pedido.remove(pedido.get(position));
+                            tvTotal.setText(String.valueOf(calcularTotalPedido()) + "€");
                             adaptador.notifyDataSetChanged();
                         }
                     });
@@ -253,6 +252,7 @@ public class activity_nuevopedido extends AppCompatActivity {
                     builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+
                             dialog.dismiss();
                         }
                     });
@@ -260,7 +260,6 @@ public class activity_nuevopedido extends AppCompatActivity {
                     alert.show();
                 }
             });
-
             return(item);
         }
     }

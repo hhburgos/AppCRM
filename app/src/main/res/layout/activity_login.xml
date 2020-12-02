@@ -12,6 +12,7 @@
         android:layout_height="0dp"
         android:ems="10"
         android:inputType="numberPassword"
+        android:text="4"
         android:textColor="#3ED1D6"
         android:textColorHint="#3ED1D6"
         android:textColorLink="#3ED1D6"

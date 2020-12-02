@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <ImageView
+                    android:id="@+id/img_articulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ag1" />
+
+                <TextView
+                    android:id="@+id/tvNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:padding="10dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:text="Agua" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnMenos"
+                        style="@android:style/Widget.Material.Light.Button"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:text="-"
+                        android:textColor="@android:color/white"
+                        android:textColorHighlight="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColorLink="@android:color/white"
+                        android:textSize="36sp"
+                        android:theme="@style/Widget.MaterialComponents.Button" />
+
+                    <EditText
+                        android:id="@+id/popup_etCantidad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLength="3"
+                        android:numeric="integer"
+                        android:textColor="@color/akiruColor"
+                        android:textSize="30sp"
+                        tools:text="25" />
+
+                    <Button
+                        android:id="@+id/btnMas"
+                        style="@android:style/Widget.Material.Light.Button"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:text="+"
+                        android:textColor="@android:color/white"
+                        android:textColorHighlight="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textColorLink="@android:color/holo_green_light"
+                        android:textSize="36sp"
+                        android:theme="@style/Widget.MaterialComponents.Button" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnAnadir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="75dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:text="Añadir" />
+
+                    <Button
+                        android:id="@+id/btnVolver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="75dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="Volver" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

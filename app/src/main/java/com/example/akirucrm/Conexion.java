@@ -20,8 +20,8 @@ public class Conexion {
             StrictMode.setThreadPolicy((policy));
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
             //LOCAL
-
-            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.179; Integrated Security=False;", "AccesoDatos", "Aa1234");
+            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://172.202.255.98; Integrated Security=False;", "AccesoDatos", "Aa1234");
+            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.179; Integrated Security=False;", "AccesoDatos", "Aa1234");
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.13; Integrated Security=False;", "AccesoDatos", "Aa1234");
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.18; Integrated Security=False;", "AccesoDatos", "Aa1234");
         }
@@ -135,6 +135,39 @@ public class Conexion {
         return listaArticulos;
     }
 
+    public static ArrayList<String> getFromBD(String campo, String tabla) throws SQLException {
+        ArrayList<String> listaArticulos = new ArrayList<String>();
+        Connection conex = getConexion();
+        Statement stmt = conex.createStatement();
+        ResultSet rs;
+        rs = stmt.executeQuery("SELECT " + campo + " from HolaMundo.dbo." + tabla);
+
+        while(rs.next()){
+            String val = rs.getString(campo);
+            listaArticulos.add(val);
+        }
+        return listaArticulos;
+    }
+
+    public static Articulo getArticulo(String nombre) throws SQLException {
+        Articulo aux = null;
+        Connection conex = getConexion();
+        Statement stmt = conex.createStatement();
+        ResultSet rs;
+        rs = stmt.executeQuery("SELECT * from HolaMundo.dbo.Articulo WHERE Nombre ='" + nombre + "'");
+
+        while(rs.next()){
+            String cod = rs.getString("codArticulo");
+            String nom = rs.getString("Nombre");
+            boolean tipo = rs.getBoolean("Tipo");
+            Double precio = rs.getDouble("Precio");
+            int stock = rs.getInt("Stock");
+            String fam = rs.getString("Familia");
+            aux = new Articulo(stock, precio, tipo, nom, cod, fam);
+        }
+        return aux;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static boolean nuevoPedidoVenta(ArrayList<Articulo> pedido) throws SQLException {
         LocalDate fecha = LocalDate.now();
@@ -147,7 +180,7 @@ public class Conexion {
             Double total = Double.parseDouble(activity_nuevopedido.calcularTotalPedido());
             stmt.executeUpdate("INSERT INTO HolaMundo.dbo.Ventas" +
                                             "(idCliente, Fecha, Precio_total, idEmpleado)" +
-                                            "VALUES(0, '" + strfecha + "'," + total + ", 4)");
+                                            "VALUES(0, '" + fecha + "'," + total + ", 4)");
 
             rs = stmt.executeQuery("SELECT max(NPedido) FROM HolaMundo.dbo.Ventas");
             int numpedido = 0;
@@ -170,6 +203,27 @@ public class Conexion {
             e.getMessage();
             return false;
         }
+    }
+
+    public static ArrayList<Articulo> getArticulos() throws SQLException {
+        ArrayList<Articulo> listaArticulos = new ArrayList<Articulo>();
+        Connection conex = getConexion();
+        Statement stmt = conex.createStatement();
+        ResultSet rs;
+
+        rs = stmt.executeQuery("SELECT * from HolaMundo.dbo.Articulo");
+
+        while(rs.next()){
+            String cod = rs.getString("codArticulo");
+            String nom = rs.getString("Nombre");
+            boolean tipo = rs.getBoolean("Tipo");
+            Double precio = rs.getDouble("Precio");
+            int stock = rs.getInt("Stock");
+            String fam = rs.getString("Familia");
+            Articulo aux = new Articulo(stock, precio, tipo, nom, cod, fam);
+            listaArticulos.add(aux);
+        }
+        return listaArticulos;
     }
 }
 

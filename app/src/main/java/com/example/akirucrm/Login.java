@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,9 +32,9 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         i =new Intent(this,activity_nuevopedido.class);
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         etLogin = findViewById(R.id.editTextNumberPassword);
-
+        etLogin.requestFocus();
         etLogin.setOnKeyListener(new View.OnKeyListener() {
             /**
              * Called when a hardware key is dispatched to a view. This allows listeners to
@@ -75,6 +77,7 @@ public class Login extends AppCompatActivity {
                 return false;
             }
         });
+
         //agregarUsuario();
         //conexionBD();
         //conecta();
@@ -125,7 +128,9 @@ public class Login extends AppCompatActivity {
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.143; Integrated Security=False;", "PEPE", "1234");
 
             //LOCAL
-            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.179; Integrated Security=False;", "AccesoDatos", "Aa1234");
+
+            conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://172.202.255.98; Integrated Security=False;", "AccesoDatos", "Aa1234");
+            //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.179; Integrated Security=False;", "AccesoDatos", "Aa1234");
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.13; Integrated Security=False;", "AccesoDatos", "Aa1234");
             //conexion = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.18; Integrated Security=False;", "AccesoDatos", "Aa1234");
 
@@ -169,5 +174,4 @@ public class Login extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-
 }
